@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import SampleForm from './components/SampleForm';
 import NewFormPage from './components/NewFormPage';
+import ModalDemo from './components/ModalDemo';
 
 function App() {
   const [activePage, setActivePage] = useState('sample');
@@ -46,9 +47,16 @@ function App() {
         >
           Event Form
         </button>
+        <button 
+          style={activePage === 'modal' ? activeButtonStyle : navButtonStyle}
+          onClick={() => setActivePage('modal')}
+        >
+          Modal Demo
+        </button>
       </div>
       
-      {activePage === 'sample' ? <SampleForm /> : <NewFormPage />}
+      {activePage === 'sample' ? <SampleForm /> : 
+       activePage === 'new' ? <NewFormPage /> : <ModalDemo />}
     </div>
   );
 }
